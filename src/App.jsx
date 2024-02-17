@@ -1,26 +1,22 @@
-// App.jsx
+// // App.jsx
 
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter , Routes, Route } from 'react-router-dom';
 import TeacherDashboard from './components/TeacherDashboard';
 import StudentDashboard from './components/StudentDashboard';
+import LandingComp from './components/LandingPage';
 
 const App = () => {
   return (
-    <Router>
-      <div>
-        <h1>Submission Ticket Application</h1>
-        <Switch>
-          <Route path="/teacher/dashboard">
-            <TeacherDashboard />
-          </Route>
-          <Route path="/student/dashboard">
-            <StudentDashboard />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingComp />} />
+        <Route path="/teacher/dashboard" element={<TeacherDashboard />} />
+        <Route path="/student/dashboard" element={<StudentDashboard />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
 export default App;
+

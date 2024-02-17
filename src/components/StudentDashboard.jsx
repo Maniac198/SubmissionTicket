@@ -1,16 +1,16 @@
 // StudentDashboard.js
 
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const StudentDashboard = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
       await axios.get('/logout'); // Assuming logout route is available in backend
-      history.push('/'); // Redirect to home page after logout
+      navigate('/'); // Redirect to home page after logout
     } catch (error) {
       console.error('Logout failed:', error);
     }
