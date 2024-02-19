@@ -1,36 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import './Landing.css'; // Assuming you have a separate CSS file for styling
+import React, { useState } from 'react';
+// import './Landing.css'; // Assuming you have a separate CSS file for styling
+import TeacherDashboard from './TeacherDashboard';
+import StudentDashboard from './StudentDashboard';
 
 function Landing() {
-  const [showText, setShowText] = useState(false);
-  const [role, setRole] = useState('');
-  const [showConfirmation, setShowConfirmation] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setShowText(true);
-    }, 500); // Delay the text reveal for 0.5 seconds
-  }, []);
+  const [showTeacherDashboard, setShowTeacherDashboard] = useState(false);
+  const [showStudentDashboard, setShowStudentDashboard] = useState(false);
+  const [selectedRole, setSelectedRole] = useState('');
 
   const handleOptionSelect = (selectedRole) => {
-    setRole(selectedRole);
-    setShowConfirmation(true);
+    setSelectedRole(selectedRole);
+    if (selectedRole === 'Teacher') {
+      setShowTeacherDashboard(true);
+      setShowStudentDashboard(false);
+    } else if (selectedRole === 'Student') {
+      setShowStudentDashboard(true);
+      setShowTeacherDashboard(false);
+    }
+  };
+
+  const handleTeacherLogin = (email) => {
+    // Here you can handle the teacher login logic
+    console.log('Teacher logged in with email:', email);
+  };
+
+  const handleStudentLogin = (misId) => {
+    // Here you can handle the student login logic
+    console.log('Student logged in with MIS ID:', misId);
   };
 
   return (
     <div className="container">
       <header>
-        {showText && (
-          <h1 className="reveal-text">
-            <span>Are</span>
-            <span>you</span>
-            <span>a</span>
-            <span>teacher</span>
-            <span>or</span>
-            <span>student?</span>
-          </h1>
-        )}
-        <div className={`options ${showText ? 'show-options' : ''}`}>
+        <h1>Are you a teacher or student?</h1>
+        <div className="options">
           <button className="option" onClick={() => handleOptionSelect('Teacher')}>
             <span>Teacher</span>
           </button>
@@ -38,13 +41,9 @@ function Landing() {
             <span>Student</span>
           </button>
         </div>
-        {showConfirmation && (
-          <div className="confirmation">
-            <p>You selected: {role}</p>
-            <button onClick={() => setShowConfirmation(false)}>Change Selection</button>
-          </div>
-        )}
       </header>
+      {showTeacherDashboard && <TeacherDashboard onLogin={handleTeacherLogin} />}
+      {showStudentDashboard && <StudentDashboard onLogin={handleStudentLogin} />}
     </div>
   );
 }
