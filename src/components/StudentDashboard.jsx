@@ -1,28 +1,33 @@
-// StudentDashboard.js
+import React, { useState } from 'react';
+// import './StudentDashboard.css'; // Assuming you have a separate CSS file for styling
 
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+function StudentDashboard({ onLogin }) {
+  const [misId, setMisId] = useState('');
+  const [password, setPassword] = useState('');
 
-const StudentDashboard = () => {
-  const navigate = useNavigate();
-
-  const handleLogout = async () => {
-    try {
-      await axios.get('/logout'); // Assuming logout route is available in backend
-      navigate('/'); // Redirect to home page after logout
-    } catch (error) {
-      console.error('Logout failed:', error);
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Here you can perform validation and login logic
+    // For simplicity, let's just pass the MIS ID to the parent component (Landing.jsx)
+    onLogin(misId);
   };
 
   return (
-    <div>
-      <h2>Student Dashboard</h2>
-      {/* Add student dashboard content here */}
-      <button onClick={handleLogout}>Logout</button>
+    <div className="student-dashboard">
+      <h2>Student Login</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label>MIS ID:</label>
+          <input type="text" value={misId} onChange={(e) => setMisId(e.target.value)} required />
+        </div>
+        <div className="form-group">
+          <label>Password:</label>
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        </div>
+        <button type="submit">Login</button>
+      </form>
     </div>
   );
-};
+}
 
 export default StudentDashboard;
