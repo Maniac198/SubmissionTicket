@@ -12,7 +12,7 @@ passport.use('teacher', new LocalStrategy({
 }, async (req, email, password, done) => {
   try {
     console.log("yaha tak to pahocha");
-    const userRole = req.body.userRole;
+    const userRole = req.body.role;
     const [rows] = await db.execute('SELECT * FROM auth_teacher WHERE email_id = ?', [email]);
     if (rows.length === 0) return done(null, false, { message: 'Incorrect email.' });
     const user = {
@@ -58,7 +58,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser(async (user, done) => {
   try {
     // Fetch user from the database based on id
-    console.log(user);
+    // console.log(user);
     // const [rows] = await db.execute('SELECT * FROM users WHERE id = ?', [id]);
     // if (rows.length === 0) {
     //   return done(new Error('User not found'));

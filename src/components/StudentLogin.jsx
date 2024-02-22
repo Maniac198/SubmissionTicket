@@ -1,5 +1,5 @@
 import React from 'react';
-import './StudentDashboard.css';
+import './StudentLogin.css';
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 
