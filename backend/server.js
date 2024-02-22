@@ -5,15 +5,15 @@ import session from 'express-session';
 import passport from 'passport';
 import teacherRoutes from './routes/teacherRoutes.js';
 import studentRoutes from './routes/studentRoutes.js';
+import newtest from './routes/newtest.js';
 import db from './db/connection.js';
 import passportConfig from './middleware/passport.js';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import morgan from 'morgan';
 const app = express();
 
 // Logging middleware
-app.use(morgan('dev'));
+// app.use(morgan('dev'));
 
 // Express middleware
 app.use(express.json());
@@ -36,14 +36,17 @@ passportConfig(passport);
 
 // Routes
 // Define your authentication routes here
-app.use('/login/teacher', teacherRoutes);
-app.use('/login/student', studentRoutes);
+app.use('/login', teacherRoutes);
+app.use('/login', studentRoutes);
+app.use('/',newtest);
 
 // Logout route
 app.get('/logout', (req, res) => {
-  req.logout();
-  res.redirect('/');
+  req.logout(() => {
+    res.status(200).json({ message: 'Logout successful' });
+  });
 });
+
 
 // route for consoling 
 app.post('/login', (req, res) => {
@@ -59,9 +62,6 @@ app.post('/login', (req, res) => {
   res.send({ message: 'Login successful' });
 });
 
-app.get('/newtest', (req,res) => {
-  res.status(300).send({name :"manish"});
-})
 
 app.get('/users', async (req, res) => {
   try {
