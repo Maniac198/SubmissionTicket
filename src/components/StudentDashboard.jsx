@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import axios from 'axios';
 import React, { useState } from 'react';
 
@@ -41,4 +42,32 @@ function StudentDashboard({ onLogin, selectedRole }) {
   );
 }
 
+=======
+import React from 'react';
+import './StudentDashboard.css';
+import { FaUser } from "react-icons/fa";
+import { FaLock } from "react-icons/fa";
+
+const StudentDashboard = () => {
+    return(
+        <div className="wrapper">
+            <form action=""> 
+                <h1>Student Login</h1>
+                <div className="input-box">
+                    <input type='text' placeholder='MIS ID' required></input>
+                    <FaUser className="icon"/>
+                </div>
+                <div className="input-box">
+                    <input type='password' placeholder='Password' required></input>
+                    <FaLock className="icon"/>
+                </div>
+
+                <button type='submit'>Login</button>
+            </form>
+        </div>
+    );
+};
+>>>>>>> fdf07878e30dd55a0e09dcedc732f64287f7aa4e
 export default StudentDashboard;
+
+// npm install react-icons --save
