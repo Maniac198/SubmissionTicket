@@ -7,12 +7,18 @@ import teacherRoutes from './routes/teacherRoutes.js';
 import studentRoutes from './routes/studentRoutes.js';
 import db from './db/connection.js';
 import passportConfig from './middleware/passport.js';
-
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import morgan from 'morgan';
 const app = express();
+
+// Logging middleware
+app.use(morgan('dev'));
 
 // Express middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(cors());
+app.use(bodyParser.json());
 
 // Express session
 app.use(session({
@@ -28,20 +34,10 @@ app.use(passport.session());
 // Passport configuration
 passportConfig(passport);
 
-
 // Routes
 // Define your authentication routes here
-app.post('/login/teacher', passport.authenticate('teacher', {
-    successRedirect: '/teacher/dashboard',
-    failureRedirect: '/login',
-    failureFlash: true
-  }));
-  
-  app.post('/login/student', passport.authenticate('student', {
-    successRedirect: '/student/dashboard',
-    failureRedirect: '/login',
-    failureFlash: true
-  }));
+app.use('/login/teacher', teacherRoutes);
+app.use('/login/student', studentRoutes);
 
 // Logout route
 app.get('/logout', (req, res) => {
@@ -49,12 +45,33 @@ app.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
+// route for consoling 
+app.post('/login', (req, res) => {
+  const { email, password, misId, selectedRole } = req.body;
+  console.log('Received login request:');
+  console.log('Email:', email);
+  console.log('Password:', password);
+  console.log('MIS ID:', misId);
+  console.log('Selected Role:', selectedRole);
+  // Perform login logic here based on selectedRole
+  // Example: Check if email and password match for teacher, or misId and password match for student
+  // Send appropriate response
+  res.send({ message: 'Login successful' });
+});
+
+app.get('/newtest', (req,res) => {
+  res.status(300).send({name :"manish"});
+})
+
+app.get('/users', async (req, res) => {
+  try {
+    const [rows, fields] = await db.query("INSERT INTO `auth_teacher`(`id`, `email_id`, `password`) VALUES ('2','b@gmail.com','123')");
+    res.json(rows);
+  } catch (err) {
+    console.error('Error fetching users:', err);
+    res.status(500).json({ error: 'Error fetching users' });
+  }
+});
 // Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
-
-//authur : 
-const fun = ()=>{
-    console.log("hellooo");
-}

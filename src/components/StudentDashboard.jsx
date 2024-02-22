@@ -1,15 +1,26 @@
+import axios from 'axios';
 import React, { useState } from 'react';
+
 // import './StudentDashboard.css'; // Assuming you have a separate CSS file for styling
 
-function StudentDashboard({ onLogin }) {
+function StudentDashboard({ onLogin, selectedRole }) {
   const [misId, setMisId] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you can perform validation and login logic
-    // For simplicity, let's just pass the MIS ID to the parent component (Landing.jsx)
-    onLogin(misId);
+    try {
+      const userData = {
+        password: password,
+        misId: misId,
+        selectedRole: selectedRole
+      };
+      const response = await axios.post('http://localhost:3000/login', userData);
+      console.log(response.data); // Assuming the backend sends back a response
+      onLogin(misId);
+    } catch (error) {
+      console.error('Login failed:', error);
+    }
   };
 
   return (
@@ -24,7 +35,7 @@ function StudentDashboard({ onLogin }) {
           <label>Password:</label>
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" onClick={handleSubmit}>Login</button>
       </form>
     </div>
   );

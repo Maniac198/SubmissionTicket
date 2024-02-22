@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import './Landing.css'; // Assuming you have a separate CSS file for styling
 import TeacherDashboard from './TeacherDashboard';
 import StudentDashboard from './StudentDashboard';
 
@@ -42,8 +41,8 @@ function Landing() {
           </button>
         </div>
       </header>
-      {showTeacherDashboard && <TeacherDashboard onLogin={handleTeacherLogin} />}
-      {showStudentDashboard && <StudentDashboard onLogin={handleStudentLogin} />}
+      {showTeacherDashboard && <TeacherDashboard onLogin={handleTeacherLogin} selectedRole="Teacher"/>}
+      {showStudentDashboard && <StudentDashboard onLogin={handleStudentLogin} selectedRole="Student"/>}
     </div>
   );
 }

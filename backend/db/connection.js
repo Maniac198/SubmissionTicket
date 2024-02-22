@@ -5,8 +5,8 @@ import mysql from 'mysql2';
 // Create a connection pool
 const pool = mysql.createPool({
   host: 'localhost',
-  user: 'your_mysql_username',
-  password: 'your_mysql_password',
+  user: 'root',
+  password: '',
   database: 'submissionticket',
   waitForConnections: true,
   connectionLimit: 10,

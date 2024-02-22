@@ -2,25 +2,17 @@
 
 import React from 'react';
 import { BrowserRouter , Routes, Route } from 'react-router-dom';
-import TeacherDashboard from './components/TeacherDashboard';
-import StudentDashboard from './components/StudentDashboard';
-<<<<<<< HEAD
-import Landing from './components/Landing';
-=======
 import Landing from './components/Landing.jsx';
->>>>>>> 75ebb9137192f722e0b304929fb6a2937ac40036
 
-const App = () => {
+function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/teacher/dashboard" element={<TeacherDashboard />} />
-        <Route path="/student/dashboard" element={<StudentDashboard />} />
       </Routes>
     </BrowserRouter>
   );
-};
+}
 
 export default App;
 
