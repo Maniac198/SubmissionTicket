@@ -4,23 +4,6 @@ import Home from './components/Home'
 import StudentDashboard from './components/StudentDashboard'
 import TeacherDashboard from "./components/TeacherDashboard";
 
-<<<<<<< HEAD
-import React from 'react';
-import { BrowserRouter , Routes, Route } from 'react-router-dom';
-import Landing from './components/Landing.jsx';
-
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Landing />} />
-      </Routes>
-    </BrowserRouter>
-  );
-}
-
-export default App;
-=======
  
 function App() {
   return(
@@ -35,6 +18,5 @@ function App() {
     </div>
   )
 }
->>>>>>> fdf07878e30dd55a0e09dcedc732f64287f7aa4e
 
 export default App
