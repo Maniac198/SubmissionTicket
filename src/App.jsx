@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from './components/Home'
 import StudentDashboard from './components/StudentDashboard'
 import TeacherDashboard from "./components/TeacherDashboard";
-
+ 
 function App() {
   return(
     <div className="App">
