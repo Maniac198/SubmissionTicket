@@ -1,26 +1,22 @@
-// // App.jsx
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from './components/Home'
+import StudentDashboard from './components/StudentDashboard'
+import TeacherDashboard from "./components/TeacherDashboard";
 
-import React from 'react';
-import { BrowserRouter , Routes, Route } from 'react-router-dom';
-import TeacherDashboard from './components/TeacherDashboard';
-import StudentDashboard from './components/StudentDashboard';
-<<<<<<< HEAD
-import Landing from './components/Landing';
-=======
-import Landing from './components/Landing.jsx';
->>>>>>> 75ebb9137192f722e0b304929fb6a2937ac40036
+ 
+function App() {
+  return(
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home/>}></Route>
+          <Route path="/TeacherDashboard" element={<TeacherDashboard/>}></Route>
+          <Route path="/StudentDashboard" element={<StudentDashboard/>}></Route>
+        </Routes>
+      </Router>
+    </div>
+  )
+}
 
-const App = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/teacher/dashboard" element={<TeacherDashboard />} />
-        <Route path="/student/dashboard" element={<StudentDashboard />} />
-      </Routes>
-    </BrowserRouter>
-  );
-};
-
-export default App;
-
+export default App
