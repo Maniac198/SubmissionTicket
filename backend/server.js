@@ -47,22 +47,6 @@ app.get('/logout', (req, res) => {
   });
 });
 
-
-// route for consoling 
-app.post('/login', (req, res) => {
-  const { email, password, misId, selectedRole } = req.body;
-  console.log('Received login request:');
-  console.log('Email:', email);
-  console.log('Password:', password);
-  console.log('MIS ID:', misId);
-  console.log('Selected Role:', selectedRole);
-  // Perform login logic here based on selectedRole
-  // Example: Check if email and password match for teacher, or misId and password match for student
-  // Send appropriate response
-  res.send({ message: 'Login successful' });
-});
-
-
 app.get('/users', async (req, res) => {
   try {
     const [rows, fields] = await db.query("INSERT INTO `auth_teacher`(`id`, `email_id`, `password`) VALUES ('2','b@gmail.com','123')");

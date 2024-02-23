@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import StudentLogin from "./components/StudentLogin";
 import TeacherLogin from "./components/TeacherLogin";
 import TeacherDashboard from "./components/TeacherDashboard";
+import StudentDashboard from "./components/StudentDashboard";
 import { RecoilRoot } from "recoil";
 
 function App() {
@@ -15,10 +16,9 @@ function App() {
             <Route path="/" element={<Home />}></Route>
             <Route path="/TeacherLogin" element={<TeacherLogin />}></Route>
             <Route path="/StudentLogin" element={<StudentLogin />}></Route>
-            <Route
-              path="/teacher/dashboard"
-              element={<TeacherDashboard />}
-            ></Route>
+            <Route path="/teacher/dashboard" element={<TeacherDashboard />}></Route>
+            <Route path="/student/dashboard" element={<StudentDashboard />}></Route>
+
           </Routes>
         </Router>
       </div>
