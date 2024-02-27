@@ -49,7 +49,7 @@ const TeacherDashboard = () => {
           <p className="text-xs mt-4 text-[#002D74]">Please Enter Email and Password for login</p>
 
           <form action="" className="flex flex-col gap-4">
-            <input className="p-2 mt-8 rounded-xl border" type="email" name="email" placeholder="Email" onChange={(e) => setMisID(e.target.value)}/>
+            <input className="p-2 mt-8 rounded-xl border" type="email" name="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)}/>
             <div className="relative">
               <input className="p-2 rounded-xl border w-full" type="password" name="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gray" className="bi bi-eye absolute top-1/2 right-3 -translate-y-1/2" viewBox="0 0 16 16">
