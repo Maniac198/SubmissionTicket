@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './TeacherLogin.css';
-import { FaUser } from "react-icons/fa";
-import { FaLock } from "react-icons/fa";
+// import './TeacherLogin.css';
+// import { FaUser } from "react-icons/fa";
+// import { FaLock } from "react-icons/fa";
 import { userRole } from './atoms';
 import { useRecoilValue } from 'recoil';
 import { useNavigate } from "react-router-dom";

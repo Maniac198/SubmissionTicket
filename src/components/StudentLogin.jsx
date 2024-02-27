@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './StudentLogin.css';
-import { FaUser } from "react-icons/fa";
-import { FaLock } from "react-icons/fa";
+// import './StudentLogin.css';
+// import { FaUser } from "react-icons/fa";
+// import { FaLock } from "react-icons/fa";
 import axios from 'axios';
 import { userRole } from './atoms';
 import { useRecoilValue } from 'recoil';
